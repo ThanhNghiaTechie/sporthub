@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMoney - Kiếm tiền online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">₫</div>
+            <span>TaskMoney</span>
+        </div>
+
+        <nav>
+            <a class="nav-item active" href="#">
+                <span>⌂</span>
+                Tổng quan
+            </a>
+
+            <a class="nav-item" href="#tasks">
+                <span>✓</span>
+                Nhiệm vụ
+            </a>
+
+            <a class="nav-item" href="#history">
+                <span>↕</span>
+                Lịch sử
+            </a>
+
+            <a class="nav-item" href="#">
+                <span>👤</span>
+                Tài khoản
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="support">
+                <div class="support-icon">?</div>
+                <div>
+                    <strong>Cần hỗ trợ?</strong>
+                    <small>Liên hệ chúng tôi</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <button class="menu-btn">☰</button>
+
+            <div class="topbar-right">
+                <button class="notification">🔔</button>
+
+                <div class="user">
+                    <div class="avatar">N</div>
+                    <div class="user-info">
+                        <strong>Nguyễn Nghĩa</strong>
+                        <small>Thành viên</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- WELCOME -->
+            <div class="welcome">
+                <div>
+                    <p class="hello">Xin chào 👋</p>
+                    <h1>Kiếm tiền từ nhiệm vụ</h1>
+                    <p class="subtext">
+                        Hoàn thành nhiệm vụ mỗi ngày và nhận thưởng.
+                    </p>
+                </div>
+
+                <button class="withdraw-btn">
+                    Rút tiền
+                </button>
+            </div>
+
+
+            <!-- BALANCE CARDS -->
+            <div class="stats">
+
+                <div class="stat-card balance-card">
+                    <div class="stat-top">
+                        <span>Số dư hiện tại</span>
+                        <div class="stat-icon">₫</div>
+                    </div>
+
+                    <h2 id="balance">25,000 ₫</h2>
+
+                    <p class="positive">
+                        Có thể rút tiền
+                    </p>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Nhiệm vụ hôm nay</span>
+                        <div class="stat-icon">✓</div>
+                    </div>
+
+                    <h2>
+                        <span id="completed">12</span>
+                    </h2>
+
+                    <p>Đã hoàn thành</p>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Thu nhập hôm nay</span>
+                        <div class="stat-icon">↗</div>
+                    </div>
+
+                    <h2 id="today-income">6,000 ₫</h2>
+
+                    <p class="positive">+12.5%</p>
+                </div>
+
+            </div>
+
+
+            <!-- TASK SECTION -->
+            <section class="section" id="tasks">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Nhiệm vụ dành cho bạn</h2>
+                        <p>Hoàn thành nhiệm vụ để nhận thưởng</p>
+                    </div>
+
+                    <span class="task-count">
+                        <span id="task-count">8</span> nhiệm vụ
+                    </span>
+                </div>
+
+
+                <div class="tasks-grid" id="tasks-container">
+
+                    <!-- TASK 1 -->
+                    <div class="task-card" data-reward="500">
+
+                        <div class="task-left">
+                            <div class="task-logo ad">A</div>
+
+                            <div>
+                                <h3>Xem quảng cáo</h3>
+                                <p>Watch Advertisement</p>
+
+                                <div class="task-meta">
+                                    <span>⏱ 30 giây</span>
+                                    <span>•</span>
+                                    <span>Hôm nay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-right">
+                            <strong>+500 ₫</strong>
+
+                            <button
+                                class="task-btn"
+                                onclick="startTask(this)">
+                                Làm nhiệm vụ
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 2 -->
+                    <div class="task-card" data-reward="700">
+
+                        <div class="task-left">
+                            <div class="task-logo video">▶</div>
+
+                            <div>
+                                <h3>Xem video</h3>
+                                <p>Video Reward</p>
+
+                                <div class="task-meta">
+                                    <span>⏱ 45 giây</span>
+                                    <span>•</span>
+                                    <span>Hôm nay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-right">
+                            <strong>+700 ₫</strong>
+
+                            <button
+                                class="task-btn"
+                                onclick="startTask(this)">
+                                Làm nhiệm vụ
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 3 -->
+                    <div class="task-card" data-reward="300">
+
+                        <div class="task-left">
+                            <div class="task-logo survey">?</div>
+
+                            <div>
+                                <h3>Khảo sát nhanh</h3>
+                                <p>Quick Survey</p>
+
+                                <div class="task-meta">
+                                    <span>⏱ 20 giây</span>
+                                    <span>•</span>
+                                    <span>Hôm nay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-right">
+                            <strong>+300 ₫</strong>
+
+                            <button
+                                class="task-btn"
+                                onclick="startTask(this)">
+                                Làm nhiệm vụ
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 4 -->
+                    <div class="task-card" data-reward="1000">
+
+                        <div class="task-left">
+                            <div class="task-logo game">G</div>
+
+                            <div>
+                                <h3>Trải nghiệm ứng dụng</h3>
+                                <p>App Offer</p>
+
+                                <div class="task-meta">
+                                    <span>⏱ 60 giây</span>
+                                    <span>•</span>
+                                    <span>Hôm nay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-right">
+                            <strong>+1,000 ₫</strong>
+
+                            <button
+                                class="task-btn"
+                                onclick="startTask(this)">
+                                Làm nhiệm vụ
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- HISTORY -->
+            <section class="section" id="history">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Lịch sử gần đây</h2>
+                        <p>Các hoạt động tài khoản</p>
+                    </div>
+
+                    <button class="view-all">
+                        Xem tất cả
+                    </button>
+                </div>
+
+
+                <div class="history">
+
+                    <div class="history-row">
+
+                        <div class="history-icon">✓</div>
+
+                        <div class="history-info">
+                            <strong>Hoàn thành nhiệm vụ</strong>
+                            <small>Xem quảng cáo</small>
+                        </div>
+
+                        <div class="history-money">
+                            +500 ₫
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-row">
+
+                        <div class="history-icon">✓</div>
+
+                        <div class="history-info">
+                            <strong>Hoàn thành nhiệm vụ</strong>
+                            <small>Xem video</small>
+                        </div>
+
+                        <div class="history-money">
+                            +700 ₫
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TASK MODAL -->
+<div class="modal hidden" id="task-modal">
+
+    <div class="modal-box">
+
+        <button class="close-btn" onclick="closeModal()">×</button>
+
+        <div class="ad-preview">
+
+            <div class="ad-placeholder">
+                <span>ADVERTISEMENT</span>
+            </div>
+
+        </div>
+
+        <h2>Đang xem quảng cáo</h2>
+
+        <p>
+            Vui lòng xem quảng cáo để nhận phần thưởng.
+        </p>
+
+        <div class="timer">
+            <span id="timer">30</span>
+        </div>
+
+        <button
+            class="complete-btn"
+            id="complete-btn"
+            disabled>
+            Đang xử lý...
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+
+    <a class="active">
+        <span>⌂</span>
+        Trang chủ
+    </a>
+
+    <a href="#tasks">
+        <span>✓</span>
+        Nhiệm vụ
+    </a>
+
+    <a href="#history">
+        <span>↕</span>
+        Lịch sử
+    </a>
+
+    <a>
+        <span>👤</span>
+        Tôi
+    </a>
+
+</nav>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
