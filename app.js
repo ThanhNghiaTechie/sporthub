@@ -364,7 +364,7 @@ function saveOrder(order) {
    ĐẶT DỊCH VỤ
    ========================================================= */
 
-function createOrder() {
+async function createOrder() {
 
     if (!isAuthenticated()) {
         window.location.href = "login.html";
@@ -476,20 +476,20 @@ function createOrder() {
     };
 
 
-    /* Trừ Coin */
-
-    coinBalance -= total;
 
 
-    localStorage.setItem(
-        "coinBalance",
-        coinBalance
-    );
+
 
 
     /* Lưu đơn */
 
     saveOrder(order);
+
+
+    /* Đồng bộ đơn sang Google Sheets */
+
+    const syncedToGoogleSheet =
+        await sendOrderToGoogleSheet(order);
 
 
     /* Cập nhật giao diện */
@@ -504,7 +504,10 @@ function createOrder() {
         `Mã đơn: ${order.id}\n` +
         `Dịch vụ: ${order.service}\n` +
         `Số lượng: ${order.quantity.toLocaleString("vi-VN")}\n` +
-        `Thanh toán: ${order.total.toLocaleString("vi-VN")} Coin`
+        `Thanh toán: ${order.total.toLocaleString("vi-VN")} Coin` +
+        (syncedToGoogleSheet
+            ? "\n\nĐơn đã được đồng bộ."
+            : "\n\nCảnh báo: Chưa đồng bộ được đơn lên Google Sheets.")
     );
 
 
@@ -1066,3 +1069,73 @@ function startAdSystem() {
 
 updateAuthHeader();
 startAdSystem();
+
+// ==========================================
+// GOOGLE SHEETS
+// ==========================================
+
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbw8KHBckCksa66Yyk-d_3fjufOnGsCprPIlipvDV7tLuZoZe9kv7iuRqg3Q9Rfyj_hneg/exec";
+
+
+// ==========================================
+// GỬI ĐƠN SANG GOOGLE SHEETS
+// ==========================================
+
+async function sendOrderToGoogleSheet(order) {
+
+    try {
+
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+
+            body: JSON.stringify({
+
+                email: order.userEmail,
+
+                platform: order.platform,
+
+                service: order.service,
+
+                link: order.link,
+
+                quantity: order.quantity,
+
+                cost: order.total
+
+            })
+
+        });
+
+        if (!response.ok) {
+            throw new Error(`Google Sheets trả về HTTP ${response.status}`);
+        }
+
+        const responseHost = new URL(response.url).hostname;
+
+        if (![
+            "script.google.com",
+            "script.googleusercontent.com"
+        ].includes(responseHost)) {
+            throw new Error("Google Apps Script yêu cầu đăng nhập hoặc chưa được triển khai công khai");
+        }
+
+        console.log("Đã gửi đơn sang Google Sheets");
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            "Không thể gửi đơn sang Google Sheets:",
+            error
+        );
+
+        return false;
+    }
+}
