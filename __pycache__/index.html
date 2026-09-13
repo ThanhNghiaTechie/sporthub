@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SocialCoin - Dịch vụ MXH</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <div class="container header-inner">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">S</div>
+                <span>Social<span class="logo-highlight">Coin</span></span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="nav">
+
+                <a href="index.html" class="nav-link active">
+                    Trang chủ
+                </a>
+
+                <a href="#services" class="nav-link">
+                    Dịch vụ
+                </a>
+
+                <a href="orders.html" class="nav-link">
+                    Đơn hàng
+                </a>
+
+                <a href="wallet.html" class="nav-link">
+                    Ví Coin
+                </a>
+
+            </nav>
+
+            <!-- Right -->
+            <div class="header-right">
+
+                <div class="coin-balance">
+                    <span class="coin-icon">◆</span>
+                    <span id="headerCoin">12,580</span>
+                    <span class="coin-text">Coin</span>
+                </div>
+
+                <a href="login.html" class="login-button" id="loginLink">
+                    Đăng nhập
+                </a>
+
+                <a href="register.html" class="register-button" id="registerLink">
+                    Đăng ký
+                </a>
+
+                <a href="dashboard.html" class="dashboard-button" id="dashboardLink" hidden>
+                    Dashboard
+                </a>
+
+                <button type="button" class="logout-button" id="headerLogout" hidden>
+                    Đăng xuất
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <div class="hero-badge">
+                        ⚡ Dịch vụ MXH tự động
+                    </div>
+
+                    <h1>
+                        Tăng tương tác
+                        <span>MXH dễ dàng</span>
+                    </h1>
+
+                    <p>
+                        Đặt dịch vụ TikTok, Facebook, Instagram
+                        nhanh chóng với hệ thống Coin đơn giản,
+                        minh bạch và dễ sử dụng.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#order" class="primary-button">
+                            Đặt dịch vụ ngay
+                        </a>
+
+                        <a href="#services" class="secondary-button">
+                            Xem dịch vụ
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="hero-card-header">
+                        <span>Số dư Coin</span>
+                        <span class="wallet-small">◆</span>
+                    </div>
+
+                    <div class="hero-balance" id="heroCoin">
+                        0
+                        <small>Coin</small>
+                    </div>
+
+                    <div class="hero-card-line"></div>
+
+                    <div class="hero-stat">
+
+                        <div>
+                            <span>Coin đã kiếm</span>
+                            <strong>0</strong>
+                        </div>
+
+                        <div>
+                            <span>Coin đã tiêu</span>
+                            <strong>0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ORDER ================= -->
+        <section class="order-section" id="order">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        ĐẶT DỊCH VỤ
+                    </span>
+
+                    <h2>
+                        Tăng tương tác cho tài khoản của bạn
+                    </h2>
+
+                    <p>
+                        Chọn nền tảng, dịch vụ và nhập thông tin đơn hàng.
+                    </p>
+
+                </div>
+
+
+                <div class="order-card">
+
+                    <!-- Platform -->
+                    <div class="form-group">
+
+                        <label for="platform">
+                            Nền tảng
+                        </label>
+
+                        <select id="platform">
+
+                            <option value="tiktok">
+                                TikTok
+                            </option>
+
+                            <option value="facebook">
+                                Facebook
+                            </option>
+
+                            <option value="instagram">
+                                Instagram
+                            </option>
+
+                            <option value="youtube">
+                                YouTube
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Service -->
+                    <div class="form-group">
+
+                        <label for="service">
+                            Dịch vụ
+                        </label>
+
+                        <select id="service">
+
+                            <option value="follow">
+                                Follow / Theo dõi
+                            </option>
+
+                            <option value="like">
+                                Like / Lượt thích
+                            </option>
+
+                            <option value="view">
+                                View / Lượt xem
+                            </option>
+
+                            <option value="comment">
+                                Comment / Bình luận
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Link -->
+                    <div class="form-group">
+
+                        <label for="link">
+                            Link cần tăng
+                        </label>
+
+                        <input
+                            type="url"
+                            id="link"
+                            placeholder="https://tiktok.com/@username..."
+                        >
+
+                    </div>
+
+
+                    <!-- Quantity -->
+                    <div class="form-group">
+
+                        <label for="quantity">
+                            Số lượng
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1000"
+                            min="100"
+                            step="100"
+                        >
+
+                    </div>
+
+
+                    <!-- Order summary -->
+                    <div class="order-summary">
+
+                        <div class="summary-item">
+
+                            <span>
+                                Đơn giá
+                            </span>
+
+                            <strong id="unitPrice">
+                                5 Coin / 1
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                Số lượng
+                            </span>
+
+                            <strong id="summaryQuantity">
+                                1,000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-total">
+
+                            <span>
+                                Tổng thanh toán
+                            </span>
+
+                            <strong>
+                                <span id="totalCoin">
+                                    5,000
+                                </span>
+                                Coin
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button
+                        type="button"
+                        id="orderButton"
+                        class="order-button"
+                    >
+                        Đặt dịch vụ
+                    </button>
+
+                    <p class="form-note">
+                        * Đây là giao diện demo. Chưa kết nối hệ thống
+                        thanh toán hoặc nhà cung cấp dịch vụ.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+        <section class="services-section" id="services">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        DỊCH VỤ
+                    </span>
+
+                    <h2>
+                        Dịch vụ phổ biến
+                    </h2>
+
+                    <p>
+                        Lựa chọn dịch vụ phù hợp với nhu cầu của bạn.
+                    </p>
+
+                </div>
+
+
+                <div class="service-grid">
+
+
+                    <!-- TikTok -->
+                    <div class="service-card">
+
+                        <div class="service-icon tiktok">
+                            ♪
+                        </div>
+
+                        <div class="service-info">
+
+                            <span class="service-platform">
+                                TikTok
+                            </span>
+
+                            <h3>
+                                TikTok Follow
+                            </h3>
+
+                            <p>
+                                Tăng lượt theo dõi
+                            </p>
+
+                        </div>
+
+                        <div class="service-price">
+                            5 Coin
+                            <span>/ 1</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TikTok Like -->
+                    <div class="service-card">
+
+                        <div class="service-icon heart">
+                            ♥
+                        </div>
+
+                        <div class="service-info">
+
+                            <span class="service-platform">
+                                TikTok
+                            </span>
+
+                            <h3>
+                                TikTok Like
+                            </h3>
+
+                            <p>
+                                Tăng lượt thích
+                            </p>
+
+                        </div>
+
+                        <div class="service-price">
+                            3 Coin
+                            <span>/ 1</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Facebook -->
+                    <div class="service-card">
+
+                        <div class="service-icon facebook">
+                            f
+                        </div>
+
+                        <div class="service-info">
+
+                            <span class="service-platform">
+                                Facebook
+                            </span>
+
+                            <h3>
+                                Facebook Like
+                            </h3>
+
+                            <p>
+                                Tăng lượt thích bài viết
+                            </p>
+
+                        </div>
+
+                        <div class="service-price">
+                            4 Coin
+                            <span>/ 1</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Instagram -->
+                    <div class="service-card">
+
+                        <div class="service-icon instagram">
+                            ◎
+                        </div>
+
+                        <div class="service-info">
+
+                            <span class="service-platform">
+                                Instagram
+                            </span>
+
+                            <h3>
+                                Instagram Follow
+                            </h3>
+
+                            <p>
+                                Tăng lượt theo dõi
+                            </p>
+
+                        </div>
+
+                        <div class="service-price">
+                            6 Coin
+                            <span>/ 1</span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+        <section class="stats-section">
+
+            <div class="container stats-grid">
+
+                <div class="stat-box">
+
+                    <strong>
+                        10K+
+                    </strong>
+
+                    <span>
+                        Người dùng
+                    </span>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <strong>
+                        50K+
+                    </strong>
+
+                    <span>
+                        Đơn hàng
+                    </span>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <strong>
+                        99%
+                    </strong>
+
+                    <span>
+                        Đơn hoàn thành
+                    </span>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <strong>
+                        24/7
+                    </strong>
+
+                    <span>
+                        Hệ thống hoạt động
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container footer-inner">
+
+            <div class="footer-logo">
+                Social<span>Coin</span>
+            </div>
+
+            <p>
+                © 2026 SocialCoin. All rights reserved.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Điều khoản
+                </a>
+
+                <a href="#">
+                    Chính sách
+                </a>
+
+                <a href="#">
+                    Liên hệ
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+
+</body>
+</html>

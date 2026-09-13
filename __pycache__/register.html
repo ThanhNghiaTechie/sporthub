@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Đăng ký - SocialCoin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+
+        <a
+            href="index.html"
+            class="auth-logo"
+        >
+
+            <div class="logo-icon">
+                S
+            </div>
+
+            <span>
+                Social<span>Coin</span>
+            </span>
+
+        </a>
+
+
+        <div class="auth-card">
+
+
+            <div class="auth-heading">
+
+                <h1>Tạo tài khoản</h1>
+
+                <p>
+                    Tham gia SocialCoin ngay hôm nay
+                </p>
+
+            </div>
+
+
+            <form id="registerForm">
+
+
+                <div class="auth-form-group">
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="auth-form-group">
+
+                    <label for="registerPassword">
+                        Mật khẩu
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Tối thiểu 6 ký tự"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="auth-form-group">
+
+                    <label for="confirmPassword">
+                        Nhập lại mật khẩu
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Nhập lại mật khẩu"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="auth-form-group">
+
+                    <label for="referralCode">
+                        Mã giới thiệu
+                        <span class="optional">
+                            (không bắt buộc)
+                        </span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="referralCode"
+                        placeholder="Nhập mã giới thiệu"
+                    >
+
+                </div>
+
+
+                <label class="terms-row">
+
+                    <input
+                        type="checkbox"
+                        id="acceptTerms"
+                        required
+                    >
+
+                    <span>
+                        Tôi đồng ý với
+                        <a href="#">
+                            Điều khoản sử dụng
+                        </a>
+                        và
+                        <a href="#">
+                            Chính sách
+                        </a>
+                    </span>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+                    Tạo tài khoản
+                </button>
+
+
+            </form>
+
+
+            <div
+                id="registerMessage"
+                class="auth-message"
+            ></div>
+
+
+            <div class="auth-divider">
+                <span>hoặc</span>
+            </div>
+
+
+            <div class="auth-register">
+
+                Đã có tài khoản?
+
+                <a href="login.html">
+                    Đăng nhập
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="auth-footer">
+            © 2026 SocialCoin
+        </div>
+
+    </div>
+
+
+    <script src="auth.js"></script>
+
+</body>
+</html>
