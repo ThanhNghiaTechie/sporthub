@@ -12,22 +12,44 @@ const services = {
     tiktok: {
         follow: {
             name: "TikTok Follow",
-            price: 5
+            coinCost: 5,
+            quantityPerCoin: 1
         },
 
         like: {
             name: "TikTok Like",
-            price: 3
+            coinCost: 1,
+            quantityPerCoin: 1
         },
 
         view: {
             name: "TikTok View",
-            price: 1
+            coinCost: 1,
+            quantityPerCoin: 10
+        },
+
+        save: {
+            name: "TikTok Save",
+            coinCost: 1,
+            quantityPerCoin: 20
+        },
+
+        share: {
+            name: "TikTok Share",
+            coinCost: 2,
+            quantityPerCoin: 1
         },
 
         comment: {
             name: "TikTok Comment",
-            price: 10
+            coinCost: 7,
+            quantityPerCoin: 1
+        },
+
+        liveView: {
+            name: "TikTok Live View",
+            coinCost: 1,
+            quantityPerCoin: 10
         }
     },
 
@@ -35,22 +57,32 @@ const services = {
     facebook: {
         follow: {
             name: "Facebook Follow",
-            price: 5
+            coinCost: 1,
+            quantityPerCoin: 1
         },
 
         like: {
             name: "Facebook Like",
-            price: 4
+            coinCost: 1,
+            quantityPerCoin: 1
         },
 
         view: {
             name: "Facebook View",
-            price: 2
+            coinCost: 1,
+            quantityPerCoin: 10
+        },
+
+        share: {
+            name: "Facebook Share",
+            coinCost: 2,
+            quantityPerCoin: 1
         },
 
         comment: {
             name: "Facebook Comment",
-            price: 8
+            coinCost: 5,
+            quantityPerCoin: 1
         }
     },
 
@@ -58,22 +90,38 @@ const services = {
     instagram: {
         follow: {
             name: "Instagram Follow",
-            price: 6
+            coinCost: 2,
+            quantityPerCoin: 1
         },
 
         like: {
             name: "Instagram Like",
-            price: 4
+            coinCost: 1,
+            quantityPerCoin: 5
         },
 
         view: {
             name: "Instagram View",
-            price: 2
+            coinCost: 1,
+            quantityPerCoin: 100
+        },
+
+        storyView: {
+            name: "Instagram Story View",
+            coinCost: 1,
+            quantityPerCoin: 50
+        },
+
+        share: {
+            name: "Instagram Share/Repost",
+            coinCost: 2,
+            quantityPerCoin: 1
         },
 
         comment: {
             name: "Instagram Comment",
-            price: 10
+            coinCost: 5,
+            quantityPerCoin: 1
         }
     },
 
@@ -81,22 +129,32 @@ const services = {
     youtube: {
         follow: {
             name: "YouTube Subscribe",
-            price: 8
+            coinCost: 150,
+            quantityPerCoin: 1
         },
 
         like: {
             name: "YouTube Like",
-            price: 5
+            coinCost: 4,
+            quantityPerCoin: 1
         },
 
         view: {
             name: "YouTube View",
-            price: 2
+            coinCost: 4,
+            quantityPerCoin: 1
+        },
+
+        liveView: {
+            name: "YouTube Live View",
+            coinCost: 1,
+            quantityPerCoin: 5
         },
 
         comment: {
             name: "YouTube Comment",
-            price: 10
+            coinCost: 10,
+            quantityPerCoin: 1
         }
     }
 
@@ -228,15 +286,16 @@ function updatePrice() {
             0
         );
 
-    const price = currentService.price;
+    const price = currentService.coinCost;
+    const quantityPerCoin = currentService.quantityPerCoin;
 
-    const total = price * quantity;
+    const total = price * quantity / quantityPerCoin;
 
 
     /* Đơn giá */
 
     unitPriceElement.textContent =
-        `${price.toLocaleString("vi-VN")} Coin / 1`;
+        `${price.toLocaleString("vi-VN")} Coin / ${quantityPerCoin.toLocaleString("vi-VN")}`;
 
 
     /* Số lượng */
@@ -389,7 +448,7 @@ async function createOrder() {
 
 
     const total =
-        currentService.price * quantity;
+        currentService.coinCost * quantity / currentService.quantityPerCoin;
 
 
     /* Kiểm tra link */
@@ -1139,3 +1198,9 @@ async function sendOrderToGoogleSheet(order) {
         return false;
     }
 }
+
+if (platformSelect && serviceSelect) {
+    updateServices();
+}
+
+updateCoinDisplay();
