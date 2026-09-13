@@ -118,7 +118,9 @@ const totalCoinElement = document.getElementById("totalCoin");
 
 const orderButton = document.getElementById("orderButton");
 const headerCoin = document.getElementById("headerCoin");
-const coinApiUrl = "http://localhost:3000";
+const coinApiUrl = window.location.hostname === "localhost" && window.location.port === "5500"
+    ? "http://localhost:3000"
+    : "";
 const localDataResetKey = "socialcoinLocalDataResetV1";
 
 if (!localStorage.getItem(localDataResetKey)) {
