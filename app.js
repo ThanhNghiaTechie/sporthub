@@ -226,34 +226,44 @@ function updateCoinDisplay() {
 }
 
 async function rewardAdForCurrentUser() {
-    const session = JSON.parse(
-        localStorage.getItem("socialcoinCurrentUser") || "{}"
-    );
+    const { data: { user } } = await supabaseClient.auth.getUser();
 
-    if (!session.email) {
+    if (!user) {
         throw new Error("Bạn cần đăng nhập để nhận Coin.");
     }
 
-    const response = await fetch(`${coinApiUrl}/api/watch-ad`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email: session.email })
+    const { data: newBalance, error } = await supabaseClient.rpc("add_coin", {
+        amount: 1
     });
 
-    if (!response.ok) {
-        throw new Error("Không thể kết nối máy chủ Coin.");
+    if (error) {
+        throw new Error(error.message || "Không thể cộng Coin.");
     }
 
-    const result = await response.json();
-
-    if (!result.success) {
-        throw new Error(result.message || "Không thể cộng Coin.");
-    }
-
-    coinBalance = Number(result.balance);
+    coinBalance = Number(newBalance);
     localStorage.setItem("coinBalance", coinBalance);
+    updateCoinDisplay();
+}
+
+async function loadCoinBalance() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    if (!user) {
+        updateCoinDisplay();
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("coins")
+        .eq("id", user.id)
+        .single();
+
+    if (!error && data) {
+        coinBalance = Number(data.coins);
+        localStorage.setItem("coinBalance", coinBalance);
+    }
+
     updateCoinDisplay();
 }
 
@@ -1203,4 +1213,4 @@ if (platformSelect && serviceSelect) {
     updateServices();
 }
 
-updateCoinDisplay();
+loadCoinBalance();
